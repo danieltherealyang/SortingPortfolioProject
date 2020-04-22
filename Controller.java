@@ -40,6 +40,9 @@ public class Controller {
     class ResetListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             m_model.clear();
+            List = m_model.toList();
+            m_view.setList(List);
+            m_view.resetVisual();
         }
     }
 }

@@ -10,7 +10,6 @@ public class Visual extends JPanel {
         setVisible(true);
     }
     
-    @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -27,10 +26,10 @@ public class Visual extends JPanel {
             int rectHeight = UnitSize * i;
             int x_coord = rectWidth * arrayIndex;
             int y_coord = View.height - rectHeight;
-            
-            g2d.drawRect(x_coord, y_coord, rectWidth, rectHeight);
             g2d.setColor(new Color(153, 255, 204));
             g2d.fillRect(x_coord, y_coord, rectWidth, rectHeight);
+            g2d.setColor(Color.BLACK);
+            g2d.drawRect(x_coord, y_coord, rectWidth, rectHeight);
             arrayIndex++;
         }
     }
@@ -38,5 +37,10 @@ public class Visual extends JPanel {
     public void setArrayList(ArrayList<Integer> list) {
         arrayList = list;
         max = Collections.max(arrayList);
+    }
+    
+    public void clear() {
+        arrayList = null;
+        max = 0;
     }
 }

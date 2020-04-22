@@ -20,7 +20,7 @@ public class View {
         m_model = model;
         m_frame = frame;
         m_frame.setLocationRelativeTo(null);        
-        label.setText("Enter number: ");
+        label.setText("Enter number (not too big): ");
         element.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char c = ke.getKeyChar();
@@ -30,6 +30,15 @@ public class View {
             }
             public void keyReleased(KeyEvent e){}
             public void keyPressed(KeyEvent e){}
+        });
+        
+        element.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    addElement.doClick();
+                }
+            }
         });
         
         panel.setOpaque(false);
@@ -70,7 +79,7 @@ public class View {
     }
     
     void resetVisual() {
-        visual.setArrayList(null);
+        visual.removeAll();
         visual.repaint();
     }
     
